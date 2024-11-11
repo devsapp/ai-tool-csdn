@@ -1,0 +1,74 @@
+openapi: 3.0.1
+info:
+    title: csdn
+    description: csdn 管理
+    version: "v1"
+servers:
+    - url: <endpoint>
+paths:
+    /publishArticleToCSDN:
+        post:
+            operationId: csdn
+            summary: 发布文章到csdn
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            required: [article_url]
+                            properties:
+                                article_url:
+                                    type: string
+                                    description: 文档地址
+                                article_title:
+                                    type: string
+                                    description: 文档标题
+                                article_content:
+                                    type: string
+                                    description: 文档内容
+            responses:
+                "200":
+                    description: 发布成功
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                required: [invoke]
+                                properties:
+                                    url:
+                                        type: string
+                                        description: 文章地址
+                                    message:
+                                        type: string
+                                        description: 发布信息
+    /getArticleFromCSDN:
+        get:
+            operationId: csdn
+            summary: 从csdn获取文章
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            required: [user_name]
+                            properties:
+                                user_name:
+                                    type: string
+                                    description: 作者名称
+            responses:
+                "200":
+                    description: 获取成功
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                required: [getArticleFromCSDN]
+                                properties:
+                                    url:
+                                        type: string
+                                        description: 文章地址
+                                    content:
+                                        type: string
+                                        description: 文章内容

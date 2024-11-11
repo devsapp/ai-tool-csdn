@@ -3,7 +3,7 @@ name: csdn
 vars:
   region: '{{ region }}'
 resources:
-  publishArticleToCSDN:
+  csdn:
     component: fc3
     props:
       region: ${vars.region}
@@ -22,7 +22,7 @@ resources:
           - npm
           - run
           - start
-      functionName: publishArticleToCSDN
+      functionName: csdn
       runtime: custom
       instanceConcurrency: 1
       memorySize: 512
@@ -34,4 +34,4 @@ resources:
         NODE_PATH: /opt/nodejs/node_modules
         FONTCONFIG_FILE: /opt/etc/fonts.conf
         PUPPETEER_CACHE_DIR: /opt/cache/puppeteer
-      code: ./publishArticleToCSDN
+      code: ./code

@@ -19,7 +19,7 @@ app.use('/', (req, res, next) => {
 });
 
 // 针对sdk 调用
-app.post('/invoke', async (req, res) => {
+app.post('/publishArticleToCSDN', async (req, res) => {
     let bodyData = req.body.toString();
     let article_url = '';
     let article_content = '';
@@ -44,6 +44,11 @@ app.post('/invoke', async (req, res) => {
     }
     const result = await invoke({ article_url, article_content, article_title });
     res.json(result);
+})
+
+app.get('/getArticleFromCSDN', async (req, res) => {
+    let bodyData = req.body.toString();
+    res.json([]);
 })
 
 
