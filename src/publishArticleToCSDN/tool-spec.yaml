@@ -1,0 +1,32 @@
+identity:
+  name: publishArticleToCSDN
+  author: serverless-devs
+  label:
+    en_US: csdn
+    zh_CN: csdn
+description:
+  human:
+    en_US: publish article to csdn
+    zh_CN: 将指定的文章内容发布到csdn
+  llm: 
+    en_US: publish article to csdn
+    zh_CN: 将指定的文章内容发布到csdn
+parameters:
+  - name: article_title
+    type: string
+    required: false
+    human_description:
+      en_US: 
+      zh_CN: 
+    llm_description: 
+      en_US: 
+      zh_CN:
+  - name: article_content
+    type: string
+    required: false
+    human_description:
+      en_US: 
+      zh_CN: 
+    llm_description: 
+      en_US: 
+      zh_CN: 

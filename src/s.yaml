@@ -1,0 +1,37 @@
+edition: 3.0.0
+name: csdn
+vars:
+  region: '{{ region }}'
+resources:
+  publishArticleToCSDN:
+    component: fc3
+    props:
+      region: ${vars.region}
+      handler: handler
+      role: acs:ram::${config("AccountID")}:role/aliyunfcdefaultrole
+      description: 发布文章到csdn
+      timeout: 60
+      internetAccess: true
+      layers:
+        - >-
+          acs:fc:cn-hangzhou:1154600634854327:layers/nodejs-ai-tools-test/versions/3
+        - acs:fc:cn-hangzhou:official:layers/Nodejs-Puppeteer19x/versions/1
+      customRuntimeConfig:
+        port: 9000
+        command:
+          - npm
+          - run
+          - start
+      functionName: publishArticleToCSDN
+      runtime: custom
+      instanceConcurrency: 1
+      memorySize: 512
+      environmentVariables:
+        PATH: >-
+          /var/fc/lang/nodejs18/bin:/usr/local/bin/apache-maven/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/ruby/bin:/opt/bin:/code:/code/bin
+        LD_LIBRARY_PATH: >-
+          /opt/nodejs/node_modules/puppeteer/.local-chromium/linux-982053/chrome-linux:/opt/lib/x86_64-linux-gnu:/opt/lib
+        NODE_PATH: /opt/nodejs/node_modules
+        FONTCONFIG_FILE: /opt/etc/fonts.conf
+        PUPPETEER_CACHE_DIR: /opt/cache/puppeteer
+      code: ./publishArticleToCSDN

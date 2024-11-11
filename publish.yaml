@@ -1,0 +1,30 @@
+Edition: 3.0.0
+Type: AITool
+Organization: 阿里云函数计算（FC）
+Effective: Public
+Name: csdn
+Provider:
+  - 阿里云
+Version: 0.0.1
+Description: CSDN 社区
+HomePage: https://github.com/devsapp/csdn
+Tags: #标签详情
+  - 信息获取
+  - 新闻阅读
+Category: AI工具
+Disclaimer: 本工具代码示例仅供交流学习使用，商业化请自行评估风险
+PrivacyStatement: 该插件在使用过程中不会收集、传输终端用户的个人信息
+Parameters:
+  type: object
+  additionalProperties: false # 不允许增加其他属性
+  required: # 必填项
+    - region
+  properties:
+    region:
+      title: 地域
+      type: string
+      default: cn-hangzhou
+      description: 创建应用所在的地区
+      enum:
+        - cn-beijing
+        - cn-hangzhou
